@@ -2,11 +2,13 @@ package fr.eni.demoIoC.repository;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.demoIoC.entity.Artiste;
 
-@Repository("IMPL")
+@Repository
+@Profile("dev")
 public class ArtisteRepositoryimpl implements ArtisteRepository {
 
 	@Override
