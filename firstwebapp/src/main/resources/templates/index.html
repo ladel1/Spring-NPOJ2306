@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi temporibus, quas incidunt aliquam, magnam placeat earum atque dolorum, praesentium molestias minus optio exercitationem repudiandae culpa mollitia provident ipsam quibusdam? Iste.</p>
+    
+    <ul th:object="${voiture}" >
+        <li> ID: <span th:text="*{id}" ></span> </li>
+        <li> Marque: <span th:text="*{marque}" ></span> </li>
+        <li> Modele: <span th:text="*{modele}" ></span> </li>
+    </ul>
+    <hr>
+    <ul  >
+        <li> ID: <span th:text="${voiture.id}" ></span> </li>
+        <li> Marque: <span th:text="${voiture.marque}" ></span> </li>
+        <li> Modele: <span th:text="${voiture.modele}" ></span> </li>
+    </ul>
+    
+
+    <a href="/details/adel" >Adel</a>
+    <a href="/connexion">Connexion</a>
+ 
+</body>
+</html>
