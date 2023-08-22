@@ -10,7 +10,6 @@ public class JavaFakerConfiguration {
 
 	@Bean
 	Faker getFakerMock() {
-		System.err.println("JavaFaker");
 		return new Faker();
 	}
 	
