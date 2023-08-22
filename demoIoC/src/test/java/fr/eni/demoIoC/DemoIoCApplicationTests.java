@@ -8,6 +8,7 @@ import fr.eni.demoIoC.service.ArtisteService;
 
 @SpringBootTest
 class DemoIoCApplicationTests {
+	
 	// IoC
 	@Autowired
 	private ArtisteService artisteService;
