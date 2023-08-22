@@ -2,6 +2,8 @@ package fr.eni.demoIoC.repository;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
@@ -14,7 +16,11 @@ import fr.eni.demoIoC.entity.Artiste;
 //@Primary
 @Profile("test")
 public class ArtisteRepositoryMock implements ArtisteRepository {
-	private Faker faker = new Faker();
+	
+	@Autowired
+	@Qualifier("getFakerMock")
+	private Faker faker ;
+		
 	private List<Artiste> lstArtistes = List.of(
 			new Artiste(faker.internet().uuid(), faker.artist().name(), faker.music().genre()),
 			new Artiste(faker.internet().uuid(), faker.artist().name(), faker.music().genre()),
