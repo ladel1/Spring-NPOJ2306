@@ -1,0 +1,35 @@
+<div th:fragment="form-film(action)"  class="row my-5">
+    <div class="col-8 offset-2">
+        <div class="mb-3">
+            <label for="ref" class="form-label">Genre</label>
+            <input type="text" class="form-control" id="ref" th:attr="readonly=${action=='details'}" th:value="${film.genre.titre}" >
+        </div>
+        <div class="mb-3">
+            <label for="nom" class="form-label">Année</label>
+            <input type="text" class="form-control" id="nom" th:attr="readonly=${action=='details'}" th:value="${film.annee}" >
+        </div>     
+        <div class="mb-3">
+            <label for="desc" class="form-label">Titre</label>
+            <input class="form-control" type="text" th:attr="readonly=${action=='details'}" th:value="${film.titre}" />
+        </div> 
+        <div class="mb-3">
+            <label for="cat" class="form-label">Réalisateur</label>
+            <input type="text" class="form-control" th:attr="readonly=${action=='details'}" th:value="${film.realisateur.nom+' '+film.realisateur.prenom}" >
+        </div>                                                          
+        <div class="mb-3">
+            <label for="prix" class="form-label">Durée</label>
+            <input type="number" class="form-control" th:attr="readonly=${action=='details'}" th:value="${film.duree}" >
+        </div> 
+        <div class="mb-3">
+            <label for="acteurs" class="form-label">Acteur(s)</label>
+            <select class="form-control" th:attr="readonly=${action=='details'}"  multiple disabled>
+                <option th:each="acteur : ${film.acteurs}" th:text="${acteur.nom+' '+acteur.prenom}" ></option>
+            </select>
+        </div> 
+        <div class="mb-3">
+            <label  class="form-label">Synopsis</label>
+            <textarea  class="form-control" th:attr="readonly=${action=='details'}" th:text="${film.synopsis}" >
+            </textarea>
+        </div>                                                               
+    </div>
+</div>

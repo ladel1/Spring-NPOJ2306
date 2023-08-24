@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.eni.demo.gestionstock.service.ProduitService;
+import jakarta.websocket.server.PathParam;
 
 @Controller
 @RequestMapping("/produits")
@@ -24,9 +25,10 @@ public class ProduitController {
 		return "produits/list";
 	}
 	
-	@GetMapping("/{id:[0-9]+}")
-	public String details(@PathVariable long id, Model model) {
+	@GetMapping("/details")
+	public String details(@PathParam("id") long id, Model model) {
 		model.addAttribute("produit", produitService.consulterProduitParId(id));
+		model.addAttribute("isReadonly", true);
 		return "produits/details";
 	}
 

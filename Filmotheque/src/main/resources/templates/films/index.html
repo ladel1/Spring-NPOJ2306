@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layouts/main-layout}">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Liste de films - Filmotheque</title>
+</head>
+<body>
+  <main layout:fragment="content">
+      <div class="row text-center mt-4">
+          <h1>Liste de films </h1>
+      </div>
+      <div class="row my-5">
+          <div class="col-8 offset-2">
+              <table class="table table-primary table-striped">
+                  <thead>
+                      <th>Genre</th>
+                      <th>Année</th>
+                      <th>Titre</th>                            
+                      <th>Réalisateur</th>
+                      <th>Action</th>
+                  </thead>
+                  <tbody>
+                      <tr th:each="film : ${films}" >
+                          <td th:text="${film.genre.titre}" ></td>
+                          <td th:text="${film.annee}"></td>
+                          <td th:text="${film.titre}"></td>
+                          <td> <span th:text="${film.realisateur.nom}"></span></td>
+                          <td>
+                              <a class="btn btn-info" th:href="@{/films/details(id=${film.id})}" ><i class="fa-regular fa-eye"></i></a>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </main>        
+</body>
+</html>

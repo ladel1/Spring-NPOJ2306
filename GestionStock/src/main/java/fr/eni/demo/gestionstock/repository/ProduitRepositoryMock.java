@@ -21,7 +21,7 @@ public class ProduitRepositoryMock implements ProduitRepository {
 	
 	public ProduitRepositoryMock() {
 		// init mock (Produit et Categorie)
-		for (int i = 1; i < 20; i++) {
+		for (int i = 1; i < 50; i++) {
 			Categorie cat = new Categorie(faker.number().randomNumber(),
 										  faker.commerce().department());
 			Produit prod = new Produit(faker.number().randomNumber(),

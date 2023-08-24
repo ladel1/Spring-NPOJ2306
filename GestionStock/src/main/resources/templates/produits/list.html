@@ -54,7 +54,7 @@
                                 <td th:text="${produit.categorie.nom}"></td>
                                 <td> <span th:text="${produit.prix}"></span> €</td>
                                 <td>
-                                   <a class="btn btn-info" th:href="@{'/produits/'+${produit.id}}" ><i class="fa-regular fa-eye"></i></a>
+                                   <a class="btn btn-info" th:href="@{/produits/details(id=${produit.id})}" ><i class="fa-regular fa-eye"></i></a>
                                 </td>
                             </tr>
                         </tbody>

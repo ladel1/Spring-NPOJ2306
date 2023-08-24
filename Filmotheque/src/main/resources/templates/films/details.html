@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layouts/main-layout}">
+<head>
+    <title>Détails du Film - Filmotheque</title>
+</head>
+<body>
+    <main layout:fragment="content">
+        <div class="row text-center mt-4">
+            <h1>Détails d film</h1>
+        </div>
+        <div th:replace="~{parts/form :: form-film(action='details')}" ></div>
+    </main>
+</body>
+</html>
