@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import fr.eni.demo.gestionstock.entity.Produit;
 import fr.eni.demo.gestionstock.service.ProduitService;
 import jakarta.websocket.server.PathParam;
 
@@ -30,6 +31,14 @@ public class ProduitController {
 		model.addAttribute("produit", produitService.consulterProduitParId(id));
 		model.addAttribute("isReadonly", true);
 		return "produits/details";
+	}
+	
+	
+	@GetMapping("/ajouter")
+	public String ajotuerForm(Model model ) {
+		model.addAttribute("produit", new Produit() );
+		model.addAttribute("categories", produitService.consulterCategories());
+		return "produits/ajouter";
 	}
 
 
