@@ -29,7 +29,12 @@
                       <li class="nav-item">
                         <a class="nav-link" th:href="@{/films}">Liste de films</a>
                       </li>
-                    </ul>
+                      <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contexte}">Contextes</a>
+                      </li>                      
+                    </ul>                    
+                    <span class="navbar-text" th:if="${membre != null && membre.id!=0}" th:text="${membre.prenom}" >                      
+                    </span>
                   </div>
                 </div>
             </nav>

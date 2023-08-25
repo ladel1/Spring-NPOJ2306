@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layouts/main-layout}">
+<head>
+    <title>Ajouter un Film - Filmotheque</title>
+</head>
+<body>
+    <main layout:fragment="content">
+        <div class="row text-center mt-4">
+            <h1>Création d'un film</h1>
+        </div>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="mb-3">
+                    <label for="genre" class="form-label">Genres</label>
+                    <select class="form-select" id="genre" aria-label="Default select example">
+                        <option th:each="genre : ${genres}" th:text="${genre.titre}" ></option>                        
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</body>
+</html>

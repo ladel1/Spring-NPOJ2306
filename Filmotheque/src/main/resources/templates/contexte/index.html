@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html 
+xmlns:th="http://www.thymeleaf.org"
+layout:decorate="~{layouts/main-layout}">
+<head>
+    <title>Contextes - Filmotheque</title>
+</head>
+<body>
+    <main layout:fragment="content">
+        <div class="row text-center mt-4">
+            <h1>Contextes</h1>           
+        </div>
+        <div class="row text-center">
+            <div class="col">   
+                
+                <span th:if="${membre.id == null }" >
+                    <a  class="btn btn-success" role="button" th:href="@{/connexion(email='abaille@campus-eni.fr')}" >Anne-Lise</a>
+                    <a class="btn btn-success" role="button" th:href="@{/connexion(email='sgobin@campus-eni.fr')}" >Stéphane[Admin]</a>
+                    <a class="btn btn-success" role="button" th:href="@{/connexion(email='jtrillard@campus-eni.fr')}" >Julien</a>
+                </span>
+                <a class="btn btn-success" role="button" th:href="@{/deconnexion}">Déconnexion</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
