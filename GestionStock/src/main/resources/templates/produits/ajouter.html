@@ -20,13 +20,22 @@
                   <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/}">Accueil</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/}" th:text="#{home}" ></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" th:href="@{/produits/ajouter}">Ajouter un produit</a>
+                        <a class="nav-link" th:href="@{/produits/ajouter}" th:text="#{add_product}" ></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" th:href="@{/produits}">Liste de produits</a>
+                        <a class="nav-link" th:href="@{/produits}" th:text="#{products_list}"></a>
+                      </li>
+                      <li class="nav-item">
+                          <form>
+                              <select name="lang" class="form-select" onchange="document.forms[0].submit();" >
+                                <option >----</option>
+                                <option value="fr">FR</option>
+                                <option value="en">EN</option>
+                              </select>
+                          </form>
                       </li>
                     </ul>
                   </div>
@@ -35,7 +44,7 @@
         </header>
         <main>
             <div class="row text-center mt-4">
-                <h1>Ajoute un produit</h1>
+                <h1 th:text="#{add_product}" ></h1>
             </div>
             <div class="row my-5">
                 <div class="col-8 offset-2">
@@ -46,12 +55,12 @@
                             <span th:replace="parts/error :: erreur('id')" ></span>
                         </div>
                         <div class="mb-3">
-                            <label for="ref" class="form-label">Référence</label>
+                            <label for="ref" class="form-label" th:text="#{reference}" ></label>
                             <input type="text" class="form-control" id="ref" th:field="*{reference}" >
                             <span th:replace="parts/error :: erreur('reference')" ></span>
                         </div>
                         <div class="mb-3">
-                            <label for="nom" class="form-label">Nom</label>
+                            <label for="nom" class="form-label" th:text="#{name}"></label>
                             <input type="text" class="form-control" id="nom" th:field="*{nom}" >
                             <span th:replace="parts/error :: erreur('nom')" ></span>
                         </div>     
@@ -62,7 +71,7 @@
                         </div> 
                    
                         <div class="mb-3">
-                            <label for="cat" class="form-label">Catégorie</label>
+                            <label for="cat" class="form-label" th:text="#{category}"></label>
                             <select class="form-select" th:field="*{categorie}" >
                                 <option th:each="categorie : ${categories}"
                                 th:value="${categorie.id}" th:text="${categorie.nom}" ></option>
@@ -70,12 +79,12 @@
                         </div>  
                                                                                   
                         <div class="mb-3">
-                            <label for="prix" class="form-label">Prix</label>
+                            <label for="prix" class="form-label" th:text="#{price}"></label>
                             <input type="number" step="0.01" class="form-control" id="prix" th:field="*{prix}" >
                             <span th:replace="parts/error :: erreur('prix')" ></span>
                         </div>   
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="submit" class="btn btn-primary"  th:text="#{add_btn}"></button>
                         </div>                    
                     </form>
                 </div>
