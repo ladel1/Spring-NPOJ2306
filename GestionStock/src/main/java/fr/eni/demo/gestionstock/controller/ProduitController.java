@@ -3,6 +3,7 @@ package fr.eni.demo.gestionstock.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.eni.demo.gestionstock.entity.Produit;
 import fr.eni.demo.gestionstock.service.ProduitService;
+import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 
 @Controller
@@ -45,9 +47,12 @@ public class ProduitController {
 	
 	@PostMapping("/ajouter")
 	public String ajouterTraitement(
-			@ModelAttribute Produit produit
+			@Valid @ModelAttribute Produit produit,
+			BindingResult br
 			) {
-		
+		if(br.hasErrors()) {
+			return "produits/ajouter";
+		}
 		produitService.sauvegarderProduit(produit);
 		return "redirect:/produits";
 	}

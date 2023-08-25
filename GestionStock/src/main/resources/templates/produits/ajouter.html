@@ -43,18 +43,22 @@
                         <div class="mb-3">
                             <label for="id" class="form-label">ID</label>
                             <input type="text" class="form-control" id="id" th:field="*{id}" >
+                            <span th:replace="parts/error :: erreur('id')" ></span>
                         </div>
                         <div class="mb-3">
                             <label for="ref" class="form-label">Référence</label>
                             <input type="text" class="form-control" id="ref" th:field="*{reference}" >
+                            <span th:replace="parts/error :: erreur('reference')" ></span>
                         </div>
                         <div class="mb-3">
                             <label for="nom" class="form-label">Nom</label>
                             <input type="text" class="form-control" id="nom" th:field="*{nom}" >
+                            <span th:replace="parts/error :: erreur('nom')" ></span>
                         </div>     
                         <div class="mb-3">
                             <label for="desc" class="form-label">Description</label>
                             <textarea class="form-control" id="desc" rows="4" th:field="*{description}" ></textarea>
+                            <span th:replace="parts/error :: erreur('description')" ></span>
                         </div> 
                    
                         <div class="mb-3">
@@ -68,6 +72,7 @@
                         <div class="mb-3">
                             <label for="prix" class="form-label">Prix</label>
                             <input type="number" step="0.01" class="form-control" id="prix" th:field="*{prix}" >
+                            <span th:replace="parts/error :: erreur('prix')" ></span>
                         </div>   
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Ajouter</button>

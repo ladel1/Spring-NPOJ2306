@@ -1,0 +1,6 @@
+<div th:fragment="erreur(field)" class="text-danger" th:if="${ #fields.errors(field) }">
+    <ul>
+        <li th:each="erreur: ${#fields.errors(field)}"  th:text="${erreur}" >
+        </li>
+    </ul>
+</div>
