@@ -1,5 +1,7 @@
 package fr.eni.demo.gestionstock.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import fr.eni.demo.gestionstock.entity.Categorie;
 import fr.eni.demo.gestionstock.entity.Produit;
 import fr.eni.demo.gestionstock.service.ProduitService;
 import jakarta.validation.Valid;
@@ -18,10 +22,16 @@ import jakarta.websocket.server.PathParam;
 
 @Controller
 @RequestMapping("/produits")
+@SessionAttributes({"categories"})
 public class ProduitController {
 	
 	@Autowired
 	private ProduitService produitService;
+	
+	@ModelAttribute("categories")
+	public List<Categorie> initCategories(){
+		return produitService.consulterCategories();
+	}
 	
 	@GetMapping
 	public String tousLesProduits(Model model) {
@@ -41,16 +51,16 @@ public class ProduitController {
 	@GetMapping("/ajouter")
 	public String ajotuerForm(Model model ) {
 		model.addAttribute("produit", new Produit() );
-		model.addAttribute("categories", produitService.consulterCategories());
 		return "produits/ajouter";
 	}
 	
 	@PostMapping("/ajouter")
 	public String ajouterTraitement(
 			@Valid @ModelAttribute Produit produit,
+	
 			BindingResult br
 			) {
-		if(br.hasErrors()) {
+		if(br.hasErrors()) {		
 			return "produits/ajouter";
 		}
 		produitService.sauvegarderProduit(produit);
